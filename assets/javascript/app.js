@@ -6,32 +6,43 @@
     var timeBoard = $("#timer");
     var question = $("#question");
     var answer = $("#answer");
+    var content = $("#content");
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 8;
+
+
 
     // timer function
     function timer() {
     
-            intervalId = setInterval(decrement, 1000);
-            gameRunning = true;
+        gameRunning = true;
+        intervalId = setInterval(decrement, 1000);
     
-        if (gameTimer === 0) {
-            clearInterval(intervalId);
-            gameRunning = false;
-        }
     }
     function decrement() {
         gameTimer--;
         console.log(gameTimer);
-       timeBoard.text("Time remaining: " + gameTimer);        
+       timeBoard.html("Time remaining: " + gameTimer);        
+       if (gameTimer === 0) {
+        stop();
+    }
+
     }
     
+    function stop() {
+        clearInterval(intervalId);
+        gameRunning = false;
+    }
     // function that generates content on page
 
     //     start button 
    startButton();
 
     function startButton() {
-        timer.html("<button id='start'>Start Game</button>");
-        $("#start").on("click", tester);
+        timeBoard.html("Time remaining: " + gameTimer);
+        content.html("<button id='start'>Start Game</button>");
+        $("#start").on("click", questions);
     }
 
     function tester() {
@@ -43,13 +54,55 @@
 
     //8 questions with 4 answer options 
 
-  function questions () {
-      question.html("");
-      // timer();
-      timeBoard.text("Time remaining: " + gameTimer);
+  function questions () {      
+    timer();
+    content.html("");
 
-        for (var k = 1; k < 9; k++) {
-            console.log("this is a test" + k);
+    var allQuestions = [
+
+        q1 = {
+            question: "Question one?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a2"
+        },
+        q2 = {
+            question: "Question two?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a1"
+        },
+        q3 = {
+            question: "Question three?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a4"
+        },
+        q4 = {
+            question: "Question four?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a3"
+        },
+        q5 = {
+            question: "Question five?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a2"
+        },
+        q6 = {
+            question: "Question six?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a4"
+        },
+        q7 = {
+            question: "Question seven?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a1"
+        },
+        q8 = {
+            question: "Question eight?",
+            answers: ["a1", "a2", "a3", "a4"],
+            correct: "a3"
+        }
+    ];
+
+        for (var k = 0; k < allQuestions.length; k++) {
             
             var newDiv = $("<div>");
             var newQ = $("<h3>");
@@ -58,24 +111,55 @@
             newQ.attr("id", "question" + k);
             newA.attr("id", "answer" + k);
             
-            $("#content").append(newDiv);
-            newDiv.append(newQ);
-            newQ.text("Question " + k);
             
+            content.append(newDiv);
+            newDiv.append(newQ);
+            newQ.text(allQuestions[k].question);
             newDiv.append(newA);
-            for (var i=1; i < 5; i++) {
-               newA.append("<input type='radio' name='q1'>" + i + " </input>");            
+            
+            for (var i=0; i < allQuestions[k].answers.length; i++) {
+                var options = allQuestions[k].answers[i]; 
+                var select = $("<input>")
+                select.attr({
+                    type: "radio",
+                    name: "q" + k,
+                    id: "a" + i,
+                    value: options
+                });
+                newA.append(select, " " + options + " ");
+  
+             
               }
                    
         }
-
-
+    
+        submitButton();
     }
 
   
     //     submit button
+    function submitButton() {
+        content.append("<button type='submit' id='submit'>Submit</button>");
+        $("#submit").on("click", gameOver);
+    }
 
     //     game over content 
+
+    function gameOver() {
+        stop();
+        content.html("");
+        var newDiv = $("<div>");
+        var newCorrect = $("<h3>");
+        var newWrong = $("<h3>")
+        var newUnanswered = $("<h3>");
+        content.append(newDiv);
+        newDiv.append(newCorrect);
+        newDiv.append(newWrong);
+        newDiv.append(newUnanswered);
+        newCorrect.text("Total Correct: " + correct);
+        newWrong.text("Total Wrong: " + incorrect);
+        newUnanswered.text("Total Unanswered: " + unanswered);
+    }
 
 
 //})
