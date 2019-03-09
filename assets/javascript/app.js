@@ -1,7 +1,7 @@
 //$(document).ready(function() {
     //initial variables
     var intervalId;
-    var gameTimer = 120;
+    var gameTimer = 100;
     var gameRunning = false;
     var timeBoard = $("#timer");
     var question = $("#question");
@@ -87,6 +87,7 @@
         timeBoard.html("Time remaining: " + gameTimer);
         content.html("<button id='start'>Start Game</button>");
         $("#start").on("click", questions);
+        content.append("<h4>Prove your knowledge of the Star Wars sequel trilogy</h4>");
     }
 
     function tester() {
