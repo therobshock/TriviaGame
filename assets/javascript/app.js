@@ -12,52 +12,6 @@
     var unanswered = 8;
 
 
-
-    // timer function
-    function timer() {
-    
-        gameRunning = true;
-        intervalId = setInterval(decrement, 1000);
-    
-    }
-    function decrement() {
-        gameTimer--;
-        console.log(gameTimer);
-       timeBoard.html("Time remaining: " + gameTimer);        
-       if (gameTimer === 0) {
-        stop();
-    }
-
-    }
-    
-    function stop() {
-        clearInterval(intervalId);
-        gameRunning = false;
-    }
-    // function that generates content on page
-
-    //     start button 
-   startButton();
-
-    function startButton() {
-        timeBoard.html("Time remaining: " + gameTimer);
-        content.html("<button id='start'>Start Game</button>");
-        $("#start").on("click", questions);
-    }
-
-    function tester() {
-        timer();
-     
-    }
-
-    //     questions and answers
-
-    //8 questions with 4 answer options 
-
-  function questions () {      
-    timer();
-    content.html("");
-
     var allQuestions = [
 
         q1 = {
@@ -102,6 +56,52 @@
         }
     ];
 
+
+    // timer function
+    function timer() {
+    
+        gameRunning = true;
+        intervalId = setInterval(decrement, 1000);
+    
+    }
+    function decrement() {
+        gameTimer--;
+       // console.log(gameTimer);
+       timeBoard.html("Time remaining: " + gameTimer);        
+       if (gameTimer === 0) {
+        stop();
+    }
+
+    }
+    
+    function stop() {
+        clearInterval(intervalId);
+        gameRunning = false;
+    }
+    // function that generates content on page
+
+    //     start button 
+   startButton();
+
+    function startButton() {
+        timeBoard.html("Time remaining: " + gameTimer);
+        content.html("<button id='start'>Start Game</button>");
+        $("#start").on("click", questions);
+    }
+
+    function tester() {
+        timer();
+     
+    }
+
+    //     questions and answers
+
+    //8 questions with 4 answer options 
+
+  function questions () {      
+    timer();
+    content.html("");
+
         for (var k = 0; k < allQuestions.length; k++) {
             
             var newDiv = $("<div>");
@@ -116,7 +116,7 @@
             newDiv.append(newQ);
             newQ.text(allQuestions[k].question);
             newDiv.append(newA);
-            
+
             for (var i=0; i < allQuestions[k].answers.length; i++) {
                 var options = allQuestions[k].answers[i]; 
                 var select = $("<input>")
@@ -139,8 +139,37 @@
   
     //     submit button
     function submitButton() {
-        content.append("<button type='submit' id='submit'>Submit</button>");
-        $("#submit").on("click", gameOver);
+        content.append("<button type='submit' id='submit' value='get value'>Submit</button>");
+        $("#submit").on("click", function() {
+        checkAnswers();
+        gameOver();
+        });
+    }
+
+    function testAnswers() {
+        var ua0 = $("input[name='q0']:checked").val();
+            if (ua0) {
+                unanswered--;
+                if (ua0 === allQuestions[0].correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            }
+    }
+
+    function checkAnswers() {
+        for (var k = 0; k < allQuestions.length; k++) {
+            var userAnswer = $("input[name='q" + k + "']:checked").val();
+            if (userAnswer) {
+                unanswered--;
+                if (userAnswer === allQuestions[k].correct) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            } 
+        }
     }
 
     //     game over content 
