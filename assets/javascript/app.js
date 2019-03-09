@@ -69,7 +69,7 @@
        // console.log(gameTimer);
        timeBoard.html("Time remaining: " + gameTimer);        
        if (gameTimer === 0) {
-        stop();
+        gameOver();
     }
 
     }
@@ -107,9 +107,7 @@
             var newDiv = $("<div>");
             var newQ = $("<h3>");
             var newA = $("<h4>");
-            newDiv.attr("id", "q" + k);
-            newQ.attr("id", "question" + k);
-            newA.attr("id", "answer" + k);
+            newDiv.attr("id", "question");
             
             
             content.append(newDiv);
@@ -141,7 +139,6 @@
     function submitButton() {
         content.append("<button type='submit' id='submit' value='get value'>Submit</button>");
         $("#submit").on("click", function() {
-        checkAnswers();
         gameOver();
         });
     }
@@ -176,6 +173,7 @@
 
     function gameOver() {
         stop();
+        checkAnswers();
         content.html("");
         var newDiv = $("<div>");
         var newCorrect = $("<h3>");

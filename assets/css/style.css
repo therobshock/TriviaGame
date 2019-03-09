@@ -1,0 +1,22 @@
+.container, .jumbotron {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(72, 163, 255);
+    background-color: rgb(12, 12, 29);
+}
+body {
+    background-image: url("background.png");
+  
+    height: 100%; 
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    margin-top: 5%;
+}
+
+#question {
+    margin: 50px;
+}
