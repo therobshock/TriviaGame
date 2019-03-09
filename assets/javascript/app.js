@@ -15,44 +15,44 @@
     var allQuestions = [
 
         q1 = {
-            question: "Question one?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a2"
+            question: "1. Fin met Rey while escaping The First Order on which somewhat-familiar desert planet?",
+            answers: ["Tatooine", "Jakku", "Arrakis", "Barstow"],
+            correct: "Jakku"
         },
         q2 = {
-            question: "Question two?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a1"
+            question: "2. Rey, Fin, and BB-8 escaped The First Order with the help of which iconic space ship from the original Star Wars trilogy?",
+            answers: ["The Millennium Falcon", "The Millennial Faction", "The Milliliter Fraction", "The Milli-Vanilli"],
+            correct: "The Millennium Falcon"
         },
         q3 = {
-            question: "Question three?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a4"
+            question: "3. Who was Kylo Ren’s biggest hero?",
+            answers: ["Luke Skywalker", "Darth Vader", "Han Solo", "Jabba the Hutt"],
+            correct: "Darth Vader"
         },
         q4 = {
-            question: "Question four?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a3"
+            question: "4. Kylo Ren was son of Han Solo and Princess Leia before he turned to the Dark Side of The Force. What was his given name?",
+            answers: ["Bart", "Bill", "Ben", "Bob"],
+            correct: "Ben"
         },
         q5 = {
-            question: "Question five?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a2"
+            question: "5. What was the name of the mysterious Supreme Leader of The First Order who seduced Kylo Ren to the Dark Side of The Force?",
+            answers: ["Smaug", "Smoke", "Snaug", "Snoke"],
+            correct: "Snoke"
         },
         q6 = {
-            question: "Question six?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a4"
+            question: "6. The droid named BB-8 carried with him a map to which iconic Star Wars character?",
+            answers: ["Luke Skywalker", "Princess Leia", "Han Solo", "Jar Jar Binks"],
+            correct: "Luke Skywalker"
         },
         q7 = {
-            question: "Question seven?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a1"
+            question: "7. Rey found Luke Skywalker on a remote island inhabited by these furry penguin-hamster creatures. What are…",
+            answers: ["Borg?", "Pork?", "Porg?", "Tribbles?"],
+            correct: "Porg?"
         },
         q8 = {
-            question: "Question eight?",
-            answers: ["a1", "a2", "a3", "a4"],
-            correct: "a3"
+            question: "8. Rey discovered much more after finding Luke Skywalker. She discovered that her parents were who?",
+            answers: ["Han and Leia", "Luke and Mon Mothma", "Luke and Lando", "Nobody in particular"],
+            correct: "Nobody in particular"
         }
     ];
 
